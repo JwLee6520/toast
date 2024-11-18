@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="/styles/Register.css">
+</head>
+<body>
+<div class = "wrap">
+    <form action="/register" method="post">
+        <div class="form-header">
+            <img src="/images/image.webp">
+        </div>
+        <div class="inputs">
+            <input type="text" name="id" placeholder="아이디" autocomplete="off" required>
+            <input type="password" name="password" placeholder="비밀번호" required>
+            <input type="text" name="name" placeholder="이름" autocomplete="off" required>
+            <input type="text" name="identity" placeholder="주민등록번호" autocomplete="off" required>
+            <input type="email" name="email" placeholder="이메일" autocomplete="off" required>
+            <input type="text" name="contact" placeholder="연락처" autocomplete="off" required>
+            <input type="text" name="address" placeholder="주소" autocomplete="off" required>
+        </div>
+        <div class="btn">
+            <button type="submit">회원가입</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

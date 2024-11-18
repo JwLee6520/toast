@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        list-style: none;
+        text-decoration: none;
+        color: inherit;
+    }
+#wrap {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+header {
+    width: 100%;
+    height: 10%;
+    /*border: 1px solid;*/
+    display: flex;
+    justify-content: space-around;
+}
+.logo{
+    width: 10%;
+    height: 100%;
+    /*border: 1px solid;*/
+    text-align: center;
+    line-height: 70px;
+    cursor: pointer;
+}
+.nav{
+    width: 50%;
+    height: 100%;
+    /*border: 1px solid;*/
+}
+.nav > ul{
+    display: flex;
+    line-height: 70px;
+    width: 100%;
+    height: 70px;
+    justify-content: space-around;
+}
+.nav > ul > li > a{
+    display: inline-block;
+    width: 70px;
+    height: 50px;
+    margin-top: 10px;
+    /*border: 1px solid;*/
+    text-align: center;
+    line-height: 50px;
+    border-radius: 20px;
+        cursor: pointer;
+}
+.nav > ul > li > a:hover {
+    opacity: .7;
+    background-color: #ccc;
+
+}
+.login-register{
+    width: 15%;
+    height: 100%;
+    /*border: 1px solid;*/
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.login-register > div{
+    width: 40%;
+    height: 40px;
+    /*border: 1px solid;*/
+    text-align: center;
+    line-height: 40px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px #000;
+}
+.login{
+    background-color: #5996f4;
+    color: #fff;
+    cursor: pointer;
+}
+.login:hover {
+    background-color: #000;
+}
+.login:active{
+    box-shadow: none;
+}
+.register{
+    background-color: #fbf840;
+    cursor: pointer;
+}
+.register:hover {
+    background-color: #000000;
+    color: #fff;
+}
+.register:active{
+    box-shadow: none;
+}
+.section {
+    width: 100vw;
+    height: 60vh;
+    background-color: #5996f4;
+}
+</style>
+<body>
+    <div id="wrap">
+        <header>
+            <div class="logo"><h2>Toast</h2></div>
+            <div class="nav">
+                <ul>
+                    <li><a href="#">nav1</a></li>
+                    <li><a href="#">nav2</a></li>
+                    <li><a href="#">nav3</a></li>
+                    <li><a href="#">nav4</a></li>
+                </ul>
+            </div>
+            <div class="login-register">
+                <div class="login">로그인</div>
+                <div class="register">회원가입</div>
+            </div>
+        </header>
+        <div class="section">
+            <h2 th:text="|안녕하세요, ${user.getUsername()}님|"></h2>
+        </div>
+    </div>
+</body>
+</html>
