@@ -1,13 +1,24 @@
 package kr.hs.sdh.toast.repository;
 
 import kr.hs.sdh.toast.entity.Customer;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 @Mapper
 public interface LoginRepository {
-    @Select("SELECT * FROM customer WHERE c_id = #{id}")
+    @Results(
+            id = "customer",
+            value = {
+
+                    @Result(column = "c_id", property = "id"),
+                    @Result(column = "c_password", property = "password"),
+                    @Result(column = "c_c_alias", property = "alias"),
+                    @Result(column = "p_uuid", property = "people", one = @One(resultMap = PeopleRepository.PEOPLE))
+            }
+    )
+    @Select(value = "")
+    Customer customer();
+    @ResultMap(value = "customer")
+    @Select("SELECT * FROM customer c inner join people p on c.p_uuid = p.p_uuid WHERE c_id = #{id}")
     Customer findId(String id);
 
     @Select("SELECT * FROM customer WHERE c_spassword = #{password}")

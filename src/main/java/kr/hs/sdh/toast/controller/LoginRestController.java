@@ -15,12 +15,6 @@ public class LoginRestController {
     public LoginRestController(LoginService loginService){
         this.loginService = loginService;
     }
-    @PostMapping("/login")
-    private Customer login(LoginInfo loginInfo) {
-        String userId = loginInfo.getUserId();
-        String userPassword = loginInfo.getUserPassword();
-        return this.loginService.getId(userId, userPassword);
-    }
     @PostMapping("/register")
     private void register(Customer customer){
         this.loginService.getInfo(customer);

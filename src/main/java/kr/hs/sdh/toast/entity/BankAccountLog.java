@@ -14,6 +14,7 @@ public class BankAccountLog {
     public BankAccountLog(
             String number,
             LocalDateTime date,
+
             boolean isDeposit,
             int before_money,
             int money,

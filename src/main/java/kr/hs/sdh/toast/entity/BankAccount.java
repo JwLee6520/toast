@@ -1,59 +1,133 @@
 package kr.hs.sdh.toast.entity;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
-public class BankAccount {
+/**
+ * 'BANK_ACCOUNT' 테이블의 데이터를 담는 클래스
+ *
+ * @since 2023-11-18
+ * @version 0.0.1
+ */
+public final class BankAccount {
+
+    /**
+     * 계좌 번호 (Mapped to 'BANK_ACCOUNT.ba_number')
+     */
     private final String number;
-    private final boolean isFreezed;
-    private final String name;
-    private final int money;
-    private final LocalDateTime createdDay;
-    private final String identity;
-    private final String uuid;
+
+    /**
+     * 계좌 금액 (Mapped to 'BANK_ACCOUNT.ba_amount')
+     */
+    private final long amount;
+
+    /**
+     * 계좌 별칭 (Mapped to 'BANK_ACCOUNT.ba_alias')
+     */
+    private final String alias;
+
+    /**
+     * 계좌 생성일자 (Mapped to 'BANK_ACCOUNT.ba_create_date')
+     */
+    private final LocalDateTime createDateTime;
+
+    /**
+     * 계좌 만기일자 (Mapped to 'BANK_ACCOUNT.ba_maturity_date')
+     */
+    private final LocalDateTime maturityDateTime;
+
+    /**
+     * 계좌 동결 여부 (Mapped to 'BANK_ACCOUNT.ba_freeze')
+     */
+    private final boolean isFreeze;
+    //통장 테이블
+    private BankBook bankBook;
+    private Set<BankAccountHistory> bankAccountHistories;
+
+    /**
+     * {@link BankAccount} 클래스의 생성자
+     * 
+     * @param number 계좌 번호
+     * @param amount 계좌 금액
+     * @param alias 계좌 별칭
+     * @param createDateTime 계좌 생성일자
+     * @param maturityDateTime 계좌 만기일자
+     * @param isFreeze 계좌 동결 여부
+     */
+    public BankAccount(
+        final String number,
+        final long amount,
+        final String alias,
+        final LocalDateTime createDateTime,
+        final LocalDateTime maturityDateTime,
+        final boolean isFreeze
+    ) {
+        this.number = number;
+        this.amount = amount;
+        this.alias = alias;
+        this.createDateTime = createDateTime;
+        this.maturityDateTime = maturityDateTime;
+        this.isFreeze = isFreeze;
+    }
+
+    public boolean isFreeze() {
+        return isFreeze;
+    }
+
+    public LocalDateTime getMaturityDateTime() {
+        return maturityDateTime;
+    }
+
+    public LocalDateTime getCreateDateTime() {
+        return createDateTime;
+    }
+
+    public String getAlias() {
+        return alias;
+    }
+
+    public long getAmount() {
+        return amount;
+    }
 
     public String getNumber() {
         return number;
     }
 
-    public boolean isFreezed() {
-        return isFreezed;
+    public void setBankBook(BankBook bankBook) {
+        this.bankBook = bankBook;
     }
 
-    public String getName() {
-        return name;
+    public BankBook getBankBook() {
+        return bankBook;
     }
 
-    public int getMoney() {
-        return money;
+    public Set<BankAccountHistory> getBankAccountHistories() {
+        return bankAccountHistories;
     }
 
-    public LocalDateTime getCreatedDay() {
-        return createdDay;
+    public void setBankAccountHistories(Set<BankAccountHistory> bankAccountHistories) {
+        this.bankAccountHistories = bankAccountHistories;
     }
 
-    public String getIdentity() {
-        return identity;
+    @Override
+    public boolean equals(final Object object) {
+        if (object != null) {
+            if (this == object) {
+                return true;
+            }
+
+            if (object instanceof final BankAccount bankAccount) {
+                return this.number.contentEquals(bankAccount.number);
+            }
+        }
+
+        return false;
     }
 
-    public String getUuid() {
-        return uuid;
+    @Override
+    public int hashCode() {
+        return this.number.hashCode();
     }
 
-    public BankAccount(
-            String number,
-            boolean isFreezed,
-            String name,
-            int money,
-            LocalDateTime createdDay,
-            String identity,
-            String uuid
-    ){
-        this.number = number;
-        this.isFreezed = isFreezed;
-        this.name = name;
-        this.money = money;
-        this.createdDay = createdDay;
-        this.identity = identity;
-        this.uuid = uuid;
-    }
 }

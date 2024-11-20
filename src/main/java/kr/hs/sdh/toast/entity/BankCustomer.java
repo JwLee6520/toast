@@ -1,5 +1,7 @@
 package kr.hs.sdh.toast.entity;
 
+import java.util.List;
+
 public class BankCustomer {
     private final String name;
     private final String identity;
@@ -7,7 +9,7 @@ public class BankCustomer {
     private final String contact;
     private final String address;
     private final String b_uuid;
-
+    private List<BankAccount> bankAccounts;
     public BankCustomer(
             String name,
             String identity,
@@ -46,6 +48,11 @@ public class BankCustomer {
     public String getB_uuid() {
         return b_uuid;
     }
+    public List<BankAccount> getBankAccounts() {
+        return bankAccounts;
+    }
 
-
+    public void setBankAccounts(List<BankAccount> bankAccounts) {
+        this.bankAccounts = bankAccounts;
+    }
 }

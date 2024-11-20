@@ -1,57 +1,38 @@
 package kr.hs.sdh.toast.entity;
 
 public class Customer {
-    private final String c_id;
-    private final String c_password;
-    private final String c_name;
-    private final String c_identity;
-    private final String c_email;
-    private final String c_contact;
-    private final String c_address;
+    private final String id;
+    private final String password;
+    private final String alias;
+    private People people;
+
     public Customer(
             String id,
             String password,
-            String name,
-            String identity,
-            String email,
-            String contact,
-            String address
+            String alias
     ){
-        this.c_id = id;
-        this.c_password = password;
-        this.c_name = name;
-        this.c_identity = identity;
-        this.c_email = email;
-        this.c_contact = contact;
-        this.c_address = address;
+        this.id = id;
+        this.password = password;
+        this.alias = alias;
     }
 
     public String getId() {
-        return c_id;
+        return id;
     }
 
     public String getPassword() {
-        return c_password;
+        return password;
     }
 
-    public String getName() {
-        return c_name;
+    public String getAlias() {
+        return alias;
     }
 
-    public String getIdentity() {
-        return c_identity;
+    public People getPeople() {
+        return people;
     }
 
-    public String getEmail() {
-        return c_email;
-    }
-
-    public String getContact() {
-        return c_contact;
-    }
-
-    public String getAddress() {
-        return c_address;
+    public void setPeople(People people) {
+        this.people = people;
     }
 }
-
